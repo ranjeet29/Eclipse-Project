@@ -1,0 +1,53 @@
+<?xml version="1.1"?>
+<project name="webdashboard" default="run" basedir=".">
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir" value="${build.dir}/jar"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="bin.dir" value="bin"/>
+    <property name="report.dir" value="reports"/>
+
+    <path id="classpath">
+        <pathelement location="${classes.dir}"/>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+<taskdef name="testng" classname="org.testng.TestNGAntTask" classpathref="classpath" />
+
+    
+    <target name="mkdir" depends="clean" description="Create project workbench">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${jar.dir}"/>
+        <mkdir dir="${lib.dir}"/>
+        <mkdir dir="${bin.dir}"/>
+    </target>
+
+    <target name="clean" description="Clean workspace">
+        <delete dir="${classes.dir}"/>
+        <delete dir="${jar.dir}"/>
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile" depends="mkdir" description="Compile the source files"> 
+        <javac
+            srcdir="${src.dir}" 
+            destdir="${classes.dir}" 
+            classpathref="classpath"
+            includeantruntime="false"
+            debug="on"/>
+    </target>
+
+
+    <target name="run" depends="compile">
+        <echo message="Running tests for timeperiod"/>
+        <mkdir dir="${report.dir}" />
+        <testng outputdir="${report.dir}" classpathref="classpath" useDefaultListeners="true">
+            <xmlfileset dir="${basedir}" includes="testng.xml" />
+        </testng>
+    </target>
+
+</project>
