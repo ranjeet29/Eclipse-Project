@@ -1,0 +1,112 @@
+package com.cavisson.scripts.;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pacJnvmApi.NSApi;
+import java.io.File;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.proxy.CaptureType;
+import org.openqa.selenium.Proxy;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Set;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+/* This Script is used to NATIVE APP :
+ * This class is using Devices Capabilities for Android Device .
+ * */
+public class capabilitySet {
+    public static BrowserMobProxy proxy;
+    public static int sessId;
+    public static String filePath;
+    public static Proxy selProxy;
+    public static HarBuilder harbuilder;
+    public static WebDriver initiateRemoteChromeBrowser(NSApi nsApi, String hubURL, int proxy_port, boolean performanceEnabled){
+       	WebDriver wd;
+    	try{
+     	    System.out.println("going to set capabilities");
+            System.setProperty("webdriver.chrome.driver", "/home/netstorm/work/automation/chromedriver");
+            ChromeOptions chromeOption = new ChromeOptions();
+            chromeOption.addArguments("chrome.switches","--disable-extensions");
+            DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+            capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOption);
+            if (performanceEnabled){
+
+            try{
+
+                System.out.println("har builder initiated");
+    	        selProxy = harbuilder.startProxy(proxy_port);
+                capabilities.setCapability(CapabilityType.PROXY, selProxy);
+                System.out.println("selproxy :"+selProxy);
+                capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
+                System.out.println("har builder ");      
+	        }catch(Exception e){
+                e.printStackTrace();
+      	    }
+                System.out.println("proxy element returned");
+	            try{
+                    filePath = harbuilder.calculateHarPath(nsApi);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("All capabilities set");
+            System.out.println("ChromeDriver capabilities are set");
+            wd = new RemoteWebDriver(new URL(hubURL), capabilities);
+            wd.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
+            System.out.println("chrome driver initiated");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return wd;
+    }
+    
+     
+    public static WebDriver initiateRemoteFirefoxBrowser(NSApi nsApi, String hubURL, String proxyHost,  int proxy_port, boolean performanceEnabled){
+        WebDriver wd = null;
+        DesiredCapabilities caps =  DesiredCapabilities.firefox();
+        try{
+            if(performanceEnabled){
+                 System.out.println("har builder initiated");
+            try{
+                selProxy = harbuilder.startProxy(proxy_port);
+                selProxy.setHttpProxy(proxyHost+":"+proxy_port).setFtpProxy(proxyHost+":"+proxy_port).setSslProxy(proxyHost+":"+proxy_port).setSocksProxy(proxyHost+":"+proxy_port);
+                }catch(Exception e){
+                e.printStackTrace();
+            }
+            System.out.println("proxy element returned");
+            try{
+            filePath = harbuilder.calculateHarPath(nsApi);
+            } catch(Exception e) {
+                System.out.println("Remote Driver is not invoking");
+                e.printStackTrace();
+              }
+            caps.setCapability(CapabilityType.PROXY, selProxy);
+            caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
+            }
+            wd= new RemoteWebDriver(new URL(hubURL), caps);
+            System.out.println("Driver initiated successfully");
+            }
+            catch(Exception e){
+            System.out.println("Exception occured while creating remote web driver for firefox browser");
+            e.printStackTrace();
+            }
+            return wd;
+            }
+
+}
+
+
+                                            
