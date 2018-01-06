@@ -29,7 +29,7 @@ public class ActionFile {
 	}
 
 	public void writallaction()throws Exception{
-		//System.out.println("##################################");
+		
 		//System.out.println("buffertext : "+buffertext.toString());
 		writeflow("//codeblock", buffertext.toString());
 		String newFileName = "" + Main.path + "/Flow.java";
@@ -37,9 +37,12 @@ public class ActionFile {
 		log.info("Flow file Cretated successfully");
 	}
 	public void flowend() throws IOException {
-		String endline = "proxy.endHar();\n"
-				+ "       commands.driverQuit();\n"
-				+ "       return 0;";
+		String endline = "HarBuilder.endhar();\n" + 
+				"        HarBuilder.stopProxy();\n" + 
+				"        snapshot.stopThread();\n" + 
+				"        command.driverQuit();\n" + 
+				"        return 0;\n" + 
+				"";
 
 		writeflow("//endblock", endline);
 
@@ -57,11 +60,11 @@ public class ActionFile {
 				"        nsApi.ns_web_url(\""+page+"\",\"URL=http://127.0.0.1/tours/index.html\",\"Method=GET\");\n" + 
 				"     \n" + 
 				"       try{\n" + 
-				"           Harbuilder.proxy.newHar(\""+url+"\");\n" + 
-				"           commands.openUrl(\""+url+"\");\n" + 
+				"           HarBuilder.proxy.newHar(\""+url+"\");\n" + 
+				"           command.openUrl(\""+url+"\");\n" + 
 				"       }catch(Exception e){e.printStackTrace();}\n" + 
 				"       try{\n" + 
-				"           String message = Harbuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
+				"           String message = HarBuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
 				"           System.out.println(message);\n" + 
 				"       } catch(Exception e){e.printStackTrace();}\n" + 
 				"       nsApi.ns_end_transaction(\""+page+"\", 0);\n";
@@ -71,11 +74,11 @@ public class ActionFile {
 					"        nsApi.ns_web_url(\""+page+"\",\"URL=http://127.0.0.1/tours/index.html\",\"Method=GET\");\n" + 
 					"     \n" + 
 					"       try{\n" + 
-					"           Harbuilder.proxy.newHar(\""+url+"\");\n" + 
-					"           commands.openUrl(\""+url+"\");\n" + 
+					"           HarBuilder.proxy.newHar(\""+url+"\");\n" + 
+					"           command.openUrl(\""+url+"\");\n" + 
 					"       }catch(Exception e){e.printStackTrace();}\n" + 
 					"       try{\n" + 
-					"           String message = Harbuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
+					"           String message = HarBuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
 					"           System.out.println(message);\n" + 
 					"       } catch(Exception e){e.printStackTrace();}\n"  
 					;
@@ -86,33 +89,52 @@ public class ActionFile {
 	
     public void clickAction(String xpath , String page , boolean har , boolean trans){
     	String clickaction;
-    	if(trans){
+    	if(trans && har ){
     	clickaction = "\n       nsApi.ns_start_transaction(\""+page+"\");\n" + 
 				"       nsApi.ns_web_url(\""+page+"\", \"URL=http://127.0.0.1/tours/index.html\", \"Method=GET\");\n" + 
 				"       try{\n" + 
 				"       \n" + 
-				"           Harbuilder.proxy.newHar(\""+url+page+"\");\n" + 
-				"           commands.findElementByXpath(\""+xpath+"\").click();\n" + 
-				"           String message = Harbuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
+				"           HarBuilder.proxy.newHar(\""+url+page+"\");\n" + 
+				"           command.findElementByXpath(\""+xpath+"\").click();\n" + 
+				"           String message = HarBuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
 				"           System.out.println(message);\n" + 
 				"       }catch(Exception e){\n" + 
 				"           e.printStackTrace();\n" + 
 				"       }        \n" + 
 				"       nsApi.ns_end_transaction(\""+page+"\", 0);\n";
-    	}else{
-    		clickaction = "\n" + 
+    	}else if ( trans == true  && har == false){
+    		clickaction = "\n       nsApi.ns_start_transaction(\""+page+"\");\n" + 
     				"       nsApi.ns_web_url(\""+page+"\", \"URL=http://127.0.0.1/tours/index.html\", \"Method=GET\");\n" + 
     				"       try{\n" + 
-    				"       \n" + 
-    				"           Harbuilder.proxy.newHar(\""+url+page+"\");\n" + 
-    				"           commands.findElementByXpath(\""+xpath+"\").click();\n" + 
-    				"           String message = Harbuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
-    				"           System.out.println(message);\n" + 
+    				"           command.findElementByXpath(\""+xpath+"\").click();\n" + 
     				"       }catch(Exception e){\n" + 
     				"           e.printStackTrace();\n" + 
-    				"       }        \n"  
-    				;
+    				"       }        \n" + 
+    				"       nsApi.ns_end_transaction(\""+page+"\", 0);\n";
+		}else if (trans == false && har == true){
+			clickaction = "\n " + 
+					"       nsApi.ns_web_url(\""+page+"\", \"URL=http://127.0.0.1/tours/index.html\", \"Method=GET\");\n" + 
+					"       try{\n" + 
+					"       \n" + 
+					"           HarBuilder.proxy.newHar(\""+url+page+"\");\n" + 
+					"           command.findElementByXpath(\""+xpath+"\").click();\n" + 
+					"           String message = HarBuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
+					"           System.out.println(message);\n" + 
+					"       }catch(Exception e){\n" + 
+					"           e.printStackTrace();\n" + 
+					"       }  \n"  
+                    ;
+				
+		}else{
+			clickaction = "\n " + 
+					"       nsApi.ns_web_url(\""+page+"\", \"URL=http://127.0.0.1/tours/index.html\", \"Method=GET\");\n" + 
+					"       try{\n" + 
+					"           command.findElementByXpath(\""+xpath+"\").click();\n" + 
+					"       }catch(Exception e){\n" + 
+					"           e.printStackTrace();\n" + 
+					"       }        \n" ;
     	}
+    	
     	
     	buffertext.append(clickaction);
 		
@@ -125,23 +147,43 @@ public class ActionFile {
 				"       nsApi.ns_web_url(\""+page+"\", \"URL=http://127.0.0.1/tours/index.html\", \"Method=GET\");\n" + 
 				"       try{\n" + 
 				"       \n" + 
-				"           Harbuilder.proxy.newHar(\""+url+page+"\");\n" + 
-				"           commands.findElementByXpath(\""+xpath+"\").sendKeys(\""+data+"\");\n" + 
-				"           String message = Harbuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
+				"           HarBuilder.proxy.newHar(\""+url+page+"\");\n" + 
+				"           command.findElementByXpath(\""+xpath+"\").sendKeys(\""+data+"\");\n" + 
+				"           String message = HarBuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
 				"           System.out.println(message);\n" + 
 				"       }catch(Exception e){\n" + 
 				"           e.printStackTrace();\n" + 
 				"       }        \n" + 
 				"       nsApi.ns_end_transaction(\""+page+"\", 0);\n";
-    	}else{
-    	inputaction = "\n"+ 
+    	}else if ( trans == true  && har == false){
+    		inputaction = "\n       nsApi.ns_start_transaction(\""+page+"\");\n" + 
     				"       nsApi.ns_web_url(\""+page+"\", \"URL=http://127.0.0.1/tours/index.html\", \"Method=GET\");\n" + 
     				"       try{\n" + 
-    				"       \n" + 
-    				"           Harbuilder.proxy.newHar(\""+url+page+"\");\n" + 
-    				"           commands.findElementByXpath(\""+xpath+"\").sendKeys(\""+data+"\");\n" + 
-    				"           String message = Harbuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
-    				"           System.out.println(message);\n" + 
+    				"           command.findElementByXpath(\""+xpath+"\").sendKeys(\""+data+"\");\n" + 
+    				"       }catch(Exception e){\n" + 
+    				"           e.printStackTrace();\n" + 
+    				"       }        \n" + 
+    				"       nsApi.ns_end_transaction(\""+page+"\", 0);\n";
+			
+		}else if (trans == false && har == true){
+			inputaction = "\n " + 
+					"       nsApi.ns_web_url(\""+page+"\", \"URL=http://127.0.0.1/tours/index.html\", \"Method=GET\");\n" + 
+					"       try{\n" + 
+					"       \n" + 
+					"           HarBuilder.proxy.newHar(\""+url+page+"\");\n" + 
+					"           command.findElementByXpath(\""+xpath+"\").sendKeys(\""+data+"\");\n" + 
+					"           String message = HarBuilder.getHarAndRBUStats(nsApi, \""+page+"\", \""+url+"\", \"default\");\n" + 
+					"           System.out.println(message);\n" + 
+					"       }catch(Exception e){\n" + 
+					"           e.printStackTrace();\n" + 
+					"       }        \n"  
+					;
+				
+		}else{
+	 	inputaction = "\n"+ 
+    				"       nsApi.ns_web_url(\""+page+"\", \"URL=http://127.0.0.1/tours/index.html\", \"Method=GET\");\n" + 
+    				"       try{\n" + 
+    				"           command.findElementByXpath(\""+xpath+"\").sendKeys(\""+data+"\");\n" + 
     				"       }catch(Exception e){\n" + 
     				"           e.printStackTrace();\n" + 
     				"       }        \n"  

@@ -1,10 +1,13 @@
 package nsu_gen_sel_script;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -19,6 +22,36 @@ public class Main {
 	public static String path;
 	public static String spath;
 	public static String sname;
+	
+	
+	private static void copyFileUsingChannel(InputStream source_old, String jarpath) throws IOException {
+                 
+		    InputStream inputStream = null;
+		    OutputStream outputStream = null;
+	    	try {
+	
+	    		inputStream = source_old;
+
+	    		// write the inputStream to a FileOutputStream
+	    		outputStream = new FileOutputStream(new File(jarpath));
+
+	    		int read = 0;
+	    		byte[] bytes = new byte[1024];
+
+	    		while ((read = inputStream.read(bytes)) != -1) {
+	    			outputStream.write(bytes, 0, read);
+	    		}
+
+
+	    	} catch (IOException e) {
+	    		e.printStackTrace();
+	    	}finally{
+	    		inputStream.close();
+	    		outputStream.close();
+	    	}
+	       
+	   }
+
 	
 	public static void main(String arg[]) throws Exception{
 		 new File("/tmp/nsu_gen_jscript").mkdirs();
@@ -40,7 +73,7 @@ public class Main {
 		String ssproj = sca.nextLine();
 		System.out.print("Enter Script Name :");
 		sname = sca.nextLine();*/
-		////////////////////////////////////////////////////////
+		
 		   String sproj = null ;
 		   String ssproj = null;;
 		   String b_type = null ;
@@ -55,11 +88,11 @@ public class Main {
 			   Options options = new Options();
 
 			    Option option_p = new Option("p", "pr_dir", true, "Project Direcotry");
-			    option_p.setRequired(true);
+			    option_p.setRequired(false);
 			    options.addOption(option_p);
 
 			    Option option_sp = new Option("sp", "spr_dir",true, "SubProject Directory");
-			    option_sp.setRequired(true);
+			    option_sp.setRequired(false);
 			    options.addOption(option_sp);
 			    
 			    Option option_n = new Option("n", "sname",true, "Script Name");
@@ -67,7 +100,7 @@ public class Main {
 			    options.addOption(option_n);
 
 
-			    Option option_b = new Option("b", "b_type", true, "Browser Type (chroe or firefox)");
+			    Option option_b = new Option("b", "b_type", true, "Browser Type (chrome or firefox or IE)");
 			    option_b.setRequired(true);
 			    options.addOption(option_b);
 			    
@@ -110,22 +143,55 @@ public class Main {
 			    p_port = cmd.getOptionValue("proPort");
 			    actionfile = cmd.getOptionValue("act_file");
 			    
-			    
+			    //Check project and subproject is passed or not
+			    if ( sproj == null ){
+					sproj = "default";
+				}
+			    if (ssproj == null){
+					ssproj = "default";
+				}
                
 		   }catch(Exception e){e.getStackTrace();}
-		
-		
-		
-		
-		
-		
-		/////////////////////////////////////////////////////////
-		
+	
+		   
 		
 		path = "/home/netstorm/work/scripts/"+sproj+"/"+ssproj+"/"+sname+"";
 		
 		//System.out.println(path);
 		spath = "/home/netstorm/work/scenarios/"+sproj+"/"+ssproj+"/";
+		
+		File jarpath = new File("/home/netstorm/work/automation/");
+		
+		
+		
+		try{
+		if (jarpath.exists() == false){
+			jarpath.mkdirs();
+		    log.info("Jar file copyed in automation dir");
+		
+			InputStream b_jar = Main.class.getResourceAsStream("/browsermob-dist-2.1.2-SNAPSHOT.jar");
+			InputStream j_jar = Main.class.getResourceAsStream("/gson-2.2.2.jar");
+			InputStream s_jar = Main.class.getResourceAsStream("/selenium-java-2.52.0.jar");
+			
+			copyFileUsingChannel(b_jar , "/home/netstorm/work/automation/browsermob-dist-2.1.2-SNAPSHOT.jar");
+			copyFileUsingChannel(j_jar , "/home/netstorm/work/automation/gson-2.2.2.jar");
+			copyFileUsingChannel(s_jar , "/home/netstorm/work/automation/selenium-java-2.52.0.jar");
+			
+			
+		}else{
+			log.info("Automaton directry already created");			
+			InputStream b_jar = Main.class.getResourceAsStream("/browsermob-dist-2.1.2-SNAPSHOT.jar");
+			InputStream j_jar = Main.class.getResourceAsStream("/gson-2.2.2.jar");
+			InputStream s_jar = Main.class.getResourceAsStream("/selenium-java-2.52.0.jar");
+			copyFileUsingChannel(b_jar , "/home/netstorm/work/automation/browsermob-dist-2.1.2-SNAPSHOT.jar");
+			copyFileUsingChannel(j_jar , "/home/netstorm/work/automation/gson-2.2.2.jar");
+			copyFileUsingChannel(s_jar , "/home/netstorm/work/automation/selenium-java-2.52.0.jar");
+			
+			
+		}
+		}catch(Exception e){
+			System.out.println("Jar Already copy");
+		}
 		
 		if(new File(path).mkdirs() == false )
 			log.info("Projetc and SubProject Already Created");
@@ -146,10 +212,7 @@ public class Main {
         //Call to Device option selection
         Flow_Gen flow = new Flow_Gen();
         flow.genScript(actionfile,b_type,host,s_port,p_port);
-        
-       
-		
-		
+        		
 		
 	}
 }

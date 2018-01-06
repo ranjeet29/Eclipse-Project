@@ -31,7 +31,7 @@ public class ReportGenrate {
 	
 	public void startReport()
 	{   System.out.println("Inside before test");
-		htmlReporter = new ExtentHtmlReporter("/home/netstorm/MyOwnReport.html");
+		htmlReporter = new ExtentHtmlReporter("/home/netstorm/Desktop/MyOwnReport.html");
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 		extent.setSystemInfo("OS","Ubuntu12");
@@ -86,12 +86,12 @@ public class ReportGenrate {
 	         
 	    	if (ln.contains("pass")){	
 	    		String [] ln1 =ln.split(",");	
-	    		String line = ln1[0] + " : " + ln1[5];
+	    		String line = ln1[0] + " :::: TR"+ln1[1]+ " :::: " + ln1[5];
 	    		test.log(Status.PASS, MarkupHelper.createLabel(line, ExtentColor.GREEN));
 	    		System.out.println("Pass:"+line);
 	    	}else if (ln.contains("fail")){		
 	    		String [] ln1 =ln.split(",");	
-		        String line = ln1[0] + " : " + ln1[5];
+		        String line = ln1[0] + " : TR"+ln1[1]+ " : " + ln1[5];
 		        test.log(Status.ERROR, MarkupHelper.createLabel(line, ExtentColor.RED));
 	            System.out.println("Fail:"+line);			
 	        }else{	

@@ -13,21 +13,32 @@ import java.util.concurrent.TimeUnit;
 import net.lightbody.bmp.BrowserMobProxy;
 
 public class Flow implements NsFlow{
-    public static BrowserMobProxy proxy;
+    public static WebDriver  driver;
     public static String filePath;
+    public static BrowserMobProxy proxy;
     public static int sessId;
 
     public Flow() {
-        commands=init_script.commands;
-        proxy = Harbuilder.proxy;
-        filePath = Harbuilder.harPath;
-        sessId = Harbuilder.sessId;
+        driver = init_script.driver;
+        proxy  = HarBuilder.proxy;
+        filePath = HarBuilder.harPath;
+        sessId = HarBuilder.sessId;
     }
-    
-    public int execute(NSApi nsApi) {
-        System.out.println("......Going to inside Home Page.....");
+
+    public Flow(WebDriver pDriver) {
+        driver = pDriver;
+     }
+
+
+    public int execute(NSApi nsApi) throws Exception{
+        System.out.println("Going inside Flow Page Successfully........");
+        
         Flow flow= PageFactory.initElements(init_script.driver, Flow.class);
         CommandFile command = new CommandFile(driver);
+        SnapShotThread snapshot = new SnapShotThread( nsApi, driver, 10L);
+        Thread snapshotThread = new Thread(snapshot);
+        snapshotThread.start();
+        
         //codeblock
        
        //endblock

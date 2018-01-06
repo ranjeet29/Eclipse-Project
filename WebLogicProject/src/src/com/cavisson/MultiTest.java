@@ -3,7 +3,7 @@ package src.com.cavisson;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.Test;       
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -78,7 +78,7 @@ public class MultiTest {
 	  System.out.println("After test run");
   }
   
-  @Test(priority = 0)
+  @Test()
   
   public void One() {
  
@@ -86,7 +86,7 @@ public class MultiTest {
  
   }
  
-  @Test(priority = 1)
+  @Test()
  
   public void Two() {
  
@@ -94,7 +94,7 @@ public class MultiTest {
  
   }
  
-  @Test(priority = 2)
+  @Test()
  
   public void Three() {
  
@@ -102,7 +102,7 @@ public class MultiTest {
  
   }
  
-  @Test(priority = 3)
+  @Test()
  
   public void Four() {
  

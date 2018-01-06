@@ -37,7 +37,12 @@ public class init_script {
 	    	log.info("Creating init_script for chrome browser");
 	    	String hub_url = "http://"+host+":"+s_port+"/wd/hub";
 	    	capss = "driver = capabilitySet.initiateRemoteChromeBrowser(nsApi, \""+hub_url+"\" ,"+p_port+" , true);";
-	    }else{
+	    }else if (browser.equalsIgnoreCase("IE")){
+	    	log.info("Creating init_script for Intrenet Explorer browser");
+	    	String hub_url = "http://"+host+":"+s_port+"/wd/hub";
+	    	capss = "driver = capabilitySet.initiateRemoteInternetExplorerBrowser(nsApi, \""+hub_url+"\" ,"+p_port+" , true);";	    	
+	    }
+	    else{
 	    	System.out.println("Nothing to print ");
 	    }
 	      

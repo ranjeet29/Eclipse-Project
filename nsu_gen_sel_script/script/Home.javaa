@@ -43,7 +43,7 @@ public class Flow implements NsFlow{
 	        //Here start the capture of har logs
             HarBuilder.proxy.newHar("cavisson.com");
             try {
-                 command.openUrl("http://www.cavisson.com");
+                 command.openUrl("http://www.cavisson.com/");
                 
               }
             catch (Exception e){

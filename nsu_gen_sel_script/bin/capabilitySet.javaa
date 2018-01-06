@@ -22,6 +22,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.*;
 /* This Script is used to NATIVE APP :
  * This class is using Devices Capabilities for Android Device .
  * */
@@ -105,6 +106,52 @@ public class capabilitySet {
             }
             return wd;
             }
+            
+            
+       public static WebDriver initiateRemoteInternetExplorerBrowser(NSApi nsApi, String hubURL, int proxy_port, boolean performanceEnabled){
+        WebDriver wd;
+        try{
+            System.out.println("going to set capabilities");
+            System.setProperty("webdriver.ie.driver", "/home/netstorm/work/automation/IE/IEDriverServer.exe");
+            System.out.println("ie driver");
+            DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, "iexplore");
+            capabilities.setCapability(CapabilityType.VERSION , "11");
+     //       capabilities.setPlatform(org.openqa.selenium.Platform.WINDOWS);
+            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+            if (performanceEnabled){
+
+            try{
+
+                System.out.println("har builder initiated");
+                selProxy = harbuilder.startProxy(proxy_port);
+                capabilities.setCapability(CapabilityType.PROXY, selProxy);
+                System.out.println("selproxy :"+selProxy);
+                capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
+                System.out.println("har builder ");
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+                System.out.println("proxy element returned");
+                try{
+                    filePath = harbuilder.calculateHarPath(nsApi);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("All capabilities set");
+            System.out.println("Internet Explorer capabilities are set");
+            wd = new RemoteWebDriver(new URL(hubURL), capabilities);
+            wd.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
+            System.out.println("Internet driver initiated");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return wd;
+    }
+      
 
 }
 

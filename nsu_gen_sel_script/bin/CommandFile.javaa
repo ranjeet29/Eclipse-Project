@@ -42,6 +42,7 @@ public class CommandFile {
 	}
 	
 	public void openUrl(String Url){
+        driver.manage().window().maximize();
         driver.get(Url);
     }
 	

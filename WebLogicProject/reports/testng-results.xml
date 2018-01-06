@@ -1,77 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="19" started-at="2017-11-21T14:08:37Z" finished-at="2017-11-21T14:08:37Z">
+  <suite name="Suite" duration-ms="26" started-at="2018-01-02T12:24:54Z" finished-at="2018-01-02T12:24:54Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="19" started-at="2017-11-21T14:08:37Z" finished-at="2017-11-21T14:08:37Z">
+    <test name="Test" duration-ms="26" started-at="2018-01-02T12:24:54Z" finished-at="2018-01-02T12:24:54Z">
       <class name="src.com.cavisson.MultiTest">
-        <test-method status="PASS" signature="beforeSuite1()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="beforeSuite1" is-config="true" duration-ms="14" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="beforeSuite1()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeSuite1" is-config="true" duration-ms="14" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite1 -->
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="beforeTest" is-config="true" duration-ms="1" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeTest" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="beforeTest1()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="beforeTest1" is-config="true" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="beforeTest1()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeTest1" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest1 -->
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="beforeClass" is-config="true" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeClass" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="afterMethod" is-config="true" duration-ms="1" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="Four()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="Four" duration-ms="1" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Four -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="One()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="One" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="One()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="One" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- One -->
-        <test-method status="PASS" signature="Two()[pri:1, instance:src.com.cavisson.MultiTest@47f37ef1]" name="Two" duration-ms="1" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Two -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="afterMethod" is-config="true" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="afterClass" is-config="true" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="Three()[pri:2, instance:src.com.cavisson.MultiTest@47f37ef1]" name="Three" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="Three()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="Three" duration-ms="1" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Three -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="afterMethod" is-config="true" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="afterTest" is-config="true" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterMethod" is-config="true" duration-ms="1" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Two()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="Two" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Two -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="f(java.lang.Integer, java.lang.String)[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="f" duration-ms="1" started-at="2018-01-02T17:54:54Z" data-provider="dp" finished-at="2018-01-02T17:54:54Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- f -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="f(java.lang.Integer, java.lang.String)[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="f" duration-ms="1" started-at="2018-01-02T17:54:54Z" data-provider="dp" finished-at="2018-01-02T17:54:54Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[b]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- f -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterClass" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterMethod" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterTest" is-config="true" duration-ms="1" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="afterTest1()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="afterTest1" is-config="true" duration-ms="0" started-at="2017-11-21T19:38:37Z" finished-at="2017-11-21T19:38:37Z">
+        <test-method status="PASS" signature="afterTest1()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterTest1" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:54Z" finished-at="2018-01-02T17:54:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest1 -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:src.com.cavisson.MultiTest@47f37ef1]" name="afterSuite" is-config="true" duration-ms="0" started-at="2017-11-21T19:38:38Z" finished-at="2017-11-21T19:38:38Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:src.com.cavisson.MultiTest@4ec6a292]" name="afterSuite" is-config="true" duration-ms="0" started-at="2018-01-02T17:54:55Z" finished-at="2018-01-02T17:54:55Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

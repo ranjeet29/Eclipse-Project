@@ -163,6 +163,31 @@ public class HarBuilder {
 		try{
 	    	FileOutputStream fos=new FileOutputStream(fileNameWithPath);
 		    har.writeTo(fos);
+		    
+		            FileReader file = new FileReader(fileNameWithPath);
+                    BufferedReader br = new BufferedReader(file);
+                    FileWriter outfile= null;
+                    BufferedWriter buffwriter = null;
+
+                    String ln = null;
+                    String ln_new = null;
+                    String ln3 = null;
+                    ln = br.readLine();
+                    if (ln.contains("serverIPAddress")) {
+                        ln3=(new StringBuilder()).append("\"_cav_cache_provider\": \"Origin\",").append("\"_cav_cache_state\": \"Hit\",").append("\"serverIPAddress\"").toString();
+                        System.out.println("ln_new: "+ln3);
+                    }
+                    if ( ln.contains("_error")) {
+                        ln_new = ln.replaceAll(",\"_error\":\"No response received\"", " ").replaceAll(",\"_error\":\"Unable to connect to host\"", " ").replaceAll("\"serverIPAddress\"", ln3);
+                    }else{
+                          ln_new = ln.replaceAll("\"serverIPAddress\"", ln3);
+                         }
+                    System.out.println("ln_new: "+ln_new);
+                    outfile = new FileWriter(fileNameWithPath);
+                    buffwriter = new BufferedWriter(outfile);
+                    buffwriter.write(ln_new);
+                    buffwriter.close();
+		    
         } catch(Exception e) {
             e.printStackTrace();
 		}
