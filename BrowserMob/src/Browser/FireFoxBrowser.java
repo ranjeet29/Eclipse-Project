@@ -20,7 +20,10 @@ import net.lightbody.bmp.proxy.CaptureType;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Proxy;
+import org.openqa.selenium.Proxy.ProxyType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
@@ -33,41 +36,61 @@ import org.testng.annotations.Test;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
 
+
 public class FireFoxBrowser {
 	
 	public WebDriver driver;
 	public BrowserMobProxy proxy;
 	public String harname = "Analytics.har";
 	
+	
+	public WebElement findElementByXpath(String xpath){
+        try{
+            WebElement element = driver.findElement(By.xpath(xpath));
+            return element;
+        }catch(WebDriverException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+	
 	@BeforeTest
 	public void setUp(){
-	//	System.setProperty("webdriver.gecko.driver", "/home/netstorm/Desktop/geckodriver");
-		  LoggingPreferences logPref = new LoggingPreferences();
-          logPref.enable(LogType.PERFORMANCE, Level.ALL);
-         
+	    	
+		
+		System.setProperty("webdriver.gecko.driver", "/home/netstorm/Back_Up/geckodriver");
+	
+	/*	LoggingPreferences logPref = new LoggingPreferences();
+        logPref.enable(LogType.PERFORMANCE, Level.ALL);*/
+     	    
 		proxy = new BrowserMobProxyServer();
-	    proxy.start(0);
-	    proxy.blacklistRequests(" ", 34, " ");
+	    proxy.start(7991);     	   
 	    Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+	    seleniumProxy.setProxyType(ProxyType.MANUAL);
+	    seleniumProxy.setHttpProxy("localhost:7991");
+	    seleniumProxy.setSslProxy("localhost:7991");
         DesiredCapabilities capa = new DesiredCapabilities();
         capa.setCapability(CapabilityType.BROWSER_NAME, "FireFox");
         capa.setCapability(CapabilityType.VERSION, "45");
         capa.setCapability(CapabilityType.PROXY, seleniumProxy);
-        capa.setCapability(CapabilityType.LOGGING_PREFS, logPref);
+  //      capa.setCapability(CapabilityType.LOGGING_PREFS, logPref);
 		driver = new FirefoxDriver(capa);
 		proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT , CaptureType.REQUEST_HEADERS , CaptureType.RESPONSE_HEADERS);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
+		
 	}
 	
 	@Test
-	public void execute(){
-		driver.get("http://10.10.30.37");
-		proxy.newHar("www.analytics.com");
-		driver.findElement(By.xpath(".//*[@id='download-button' and text()='Get Started']")).click();
+	public void execute() throws Exception{
+	
+		proxy.newHar("http://10.10.30.37/analytics.admin");
+		driver.get("http://www.google.com");
+	/*	driver.findElement(By.xpath(".//*[@id='download-button' and text()='Get Started']")).click();
 		driver.findElement(By.xpath(".//input[@name='username']")).sendKeys("admin");
 		driver.findElement(By.xpath(".//input[@name='password']")).sendKeys("C@VAdmin");
-		driver.findElement(By.xpath("html/body/div[3]/div/div[2]/div/div[1]/div[2]/div/form/div[3]/button")).click();
+		driver.findElement(By.xpath("html/body/div[3]/div/div[2]/div/div[1]/div[2]/div/form/div[3]/button")).click(); */
 		
 		
 	}

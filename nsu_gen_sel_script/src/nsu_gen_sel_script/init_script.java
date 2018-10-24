@@ -29,6 +29,7 @@ public class init_script {
 	    String content = "package com.cavisson.scripts."+sname+"" ;
 	    // log.info("content:"+content);
 	    
+	    
 	    if(browser.equalsIgnoreCase("firefox")){
 	    	log.info("Creating Init_script for firefox browser");
 	    	String hub_url = "http://"+host+":"+s_port+"/wd/hub"; 
@@ -41,8 +42,15 @@ public class init_script {
 	    	log.info("Creating init_script for Intrenet Explorer browser");
 	    	String hub_url = "http://"+host+":"+s_port+"/wd/hub";
 	    	capss = "driver = capabilitySet.initiateRemoteInternetExplorerBrowser(nsApi, \""+hub_url+"\" ,"+p_port+" , true);";	    	
-	    }
-	    else{
+	    }else if (browser.equalsIgnoreCase("android")){
+	    	log.info("Creating init_script for android browser");
+	    	String hub_url = "http://"+host+":"+s_port+"/wd/hub";
+	    	capss = "driver =  capabilitySet.initiateRemoteChromeBrowserMobile(nsApi, \""+hub_url+"\" ,"+p_port+" , true);";	    	
+	    }else if (browser.equalsIgnoreCase("ios")){
+	    	log.info("Creating init_script for IOS browser");
+	    	String hub_url = "http://"+host+":"+s_port+"/wd/hub";
+	    	capss = "ad =  capabilitySet.initiateRemoteSafariBrowserMobile(nsApi, \""+hub_url+"\" ,"+p_port+" , true);";	    	
+	    }else{
 	    	System.out.println("Nothing to print ");
 	    }
 	      

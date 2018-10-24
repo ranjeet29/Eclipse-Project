@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="41" started-at="2018-08-07T09:44:34Z" finished-at="2018-08-07T09:44:34Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="41" started-at="2018-08-07T09:44:34Z" finished-at="2018-08-07T09:44:34Z">
+      <class name="com.cavisson.automation.RDTAutomation.testsuite.RDTSuite">
+        <test-method status="PASS" signature="startApp(java.lang.String)[pri:0, instance:com.cavisson.automation.RDTAutomation.testsuite.RDTSuite@370736d9]" name="startApp" is-config="true" duration-ms="1511" started-at="2018-08-07T15:14:32Z" description="Going to register driver" finished-at="2018-08-07T15:14:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startApp -->
+        <test-method status="PASS" signature="androidDeviceTest(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.cavisson.automation.RDTAutomation.testsuite.RDTSuite@370736d9]" name="androidDeviceTest" duration-ms="7" started-at="2018-08-07T15:14:34Z" description="Going to run android devices test case" data-provider="androidDeviceInfoProvider" finished-at="2018-08-07T15:14:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[samsung 8]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[India]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[demo]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- androidDeviceTest -->
+        <test-method status="PASS" signature="androidDeviceTest(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.cavisson.automation.RDTAutomation.testsuite.RDTSuite@370736d9]" name="androidDeviceTest" duration-ms="2" started-at="2018-08-07T15:14:34Z" description="Going to run android devices test case" data-provider="androidDeviceInfoProvider" finished-at="2018-08-07T15:14:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[samsang 9]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[UK]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[demo1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- androidDeviceTest -->
+        <test-method status="PASS" signature="iosDeviceTest(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.cavisson.automation.RDTAutomation.testsuite.RDTSuite@370736d9]" name="iosDeviceTest" duration-ms="2" started-at="2018-08-07T15:14:34Z" description="Going to run ios device test case" data-provider="iosDeviceInfoProvider" finished-at="2018-08-07T15:14:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ios 11]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[India]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[demo]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- iosDeviceTest -->
+        <test-method status="PASS" signature="iosDeviceTest(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.cavisson.automation.RDTAutomation.testsuite.RDTSuite@370736d9]" name="iosDeviceTest" duration-ms="2" started-at="2018-08-07T15:14:34Z" description="Going to run ios device test case" data-provider="iosDeviceInfoProvider" finished-at="2018-08-07T15:14:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ios 10]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[UK]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[demo1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- iosDeviceTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.cavisson.automation.RDTAutomation.testsuite.RDTSuite@370736d9]" name="tearDown" is-config="true" duration-ms="173" started-at="2018-08-07T15:14:34Z" description="Going to quit and close driver" finished-at="2018-08-07T15:14:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.cavisson.automation.RDTAutomation.testsuite.RDTSuite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

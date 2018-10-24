@@ -1,0 +1,38 @@
+{ "actions" : [
+	{
+		"action":"Browse",
+		"archive":true,
+		"page":"home",
+		"url":"https://www.kohls.com/",
+		
+	},
+	
+	{	"action":"Input",
+	    "archive":false,
+	    "info":"jeans",
+	    "byxpath":"//*[@id='search']",
+	    "page":"search"		
+	},
+	
+	{
+		"action":"Click",
+		"page":"search",
+		"byxpath":"//*[@id='site-search']/fieldset/input[1]",
+		"archive":true,
+	},
+	
+	{
+		"action":"Click",
+		"page":"product",
+		"byxpath":"//*[@id='content']/div[2]/div[2]/div[1]/div[4]/ul/li[1]/div[1]/a/img",
+		"archive":true,
+	},
+	{
+		"action":"Scroll",
+        "page":"Scroll",
+		"option":"(0,63)",
+		"archive":false,
+	},
+	
+]
+}

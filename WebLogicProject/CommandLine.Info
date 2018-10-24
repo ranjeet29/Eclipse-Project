@@ -1,3 +1,0 @@
-java -cp ".:/home/netstorm/JAR_File/selenium-2.53.0/libs/testng-6.9.9.jar:/home/netstorm/JAR_File/selenium-2.53.0/libs/jcommander-1.48.jar:/home/netstorm/workbench/WebLogicProject/bin" org.testng.TestNG testng.xml
-
-some thing changed

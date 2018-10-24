@@ -23,9 +23,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.*;
-/* This Script is used to NATIVE APP :
- * This class is using Devices Capabilities for Android Device .
- * */
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+
+
+
 public class capabilitySet {
     public static BrowserMobProxy proxy;
     public static int sessId;
@@ -152,6 +156,79 @@ public class capabilitySet {
         return wd;
     }
       
+      
+     public static WebDriver initiateRemoteChromeBrowserMobile(NSApi nsApi, String hubURL, int proxy_port, boolean performanceEnabled){
+        WebDriver wd = null;
+        System.setProperty("webdriver.chrome.driver","/home/netstorm/work/automation/AA/aa/CH/chromedriver");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setExperimentalOption("androidPackage","com.android.chrome");
+        DesiredCapabilities caps = DesiredCapabilities.chrome();
+        caps.setCapability("autoAcceptAlerts", true);
+        caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        try{
+        if(performanceEnabled){
+            System.out.println("har builder initiated");
+            try{
+            selProxy = harbuilder.startProxy(proxy_port);
+            }catch(Exception e){
+                e.printStackTrace();
+                    }
+            System.out.println("proxy element returned");
+            try{
+                filePath = harbuilder.calculateHarPath(nsApi);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+            caps.setCapability(CapabilityType.PROXY, selProxy);
+            caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
+            }
+
+           wd  =  new ChromeDriver(caps);
+         //   wd = new RemoteWebDriver(new URL(hubURL), caps);
+            wd.manage().timeouts().implicitlyWait(20000, TimeUnit.MILLISECONDS);
+            System.out.println("Driver initiated successfully");
+            }catch(Exception e ){
+               e.printStackTrace();
+            }
+         return wd;
+      }
+       
+       public static WebDriver initiateRemoteSafariBrowserMobile(NSApi nsApi, String hubURL, int proxy_port, boolean performanceEnabled){
+        AppiumDriver ad = null;
+        try {
+
+            System.out.println("going to set capabilities");
+            DesiredCapabilities capabilities = new  DesiredCapabilities();
+
+            capabilities.setCapability("platformVersion", "9.3.5");
+            capabilities.setCapability("platformName", "iOS");
+            capabilities.setCapability("deviceName" , "netstorm's iPhone");
+            capabilities.setCapability("udid" , "0f3e6ef549d8835922e33f522de4b1dd567f8435");
+            capabilities.setCapability("newCommandTimeout", 60 * 5);
+            capabilities.setCapability("browserName","Safari");
+            System.out.println("Setting capabiliteis");
+
+            if(performanceEnabled){
+            System.out.println("har builder initiated");
+            try{
+                selProxy = harbuilder.startProxy(proxy_port);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            System.out.println("proxy element returned");
+            try{
+            filePath = harbuilder.calculateHarPath(nsApi);
+            } catch(Exception e) { e.printStackTrace();}
+            capabilities.setCapability(CapabilityType.PROXY, selProxy);
+            capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
+            }
+            ad = new IOSDriver<>(new URL(hubURL) , capabilities);
+            ad.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
+
+            }catch(Exception e){ e.printStackTrace() ;};
+          return ad;
+        }
+       
 
 }
 

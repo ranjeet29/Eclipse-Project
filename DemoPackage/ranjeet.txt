@@ -1,0 +1,9 @@
+action=Browse,value=https://www.kohls.com/
+action=Scroll,option=(0,63)
+action=input,type=xpath,value=/html/body/div[2]/div[8]/div[2]/div[3]/,data=jeans		
+action=Click,type=xpath,value=/html/body/div[2]/div[8]/div[2]/div[3]/div/div[2]/div/div/a[9]/p,option=(309,124)
+action=Click,type=xpath,value=/html/body/div[2]/div[2]/div[2]/div[2]/div/div/div/ul/li[2]/a/img,option=(511,54)
+action=Scroll,option=(0,83)
+action=Scroll,option=(0,804)
+action=Scroll,option=(0,452)
+action=search,input=timberland,option=(395,457)

@@ -2,10 +2,12 @@ package com.cavisson.scripts.;
 import pacJnvmApi.NSApi;
 import java.io.File;
 import org.openqa.selenium.WebDriver;
+import io.appium.java_client.AppiumDriver;
 
 
 public class init_script {
-    public static WebDriver driver;          
+    public static WebDriver driver;
+    public static AppiumDriver ad;          
  
     public static int execute(NSApi nsApi) throws Exception
     {

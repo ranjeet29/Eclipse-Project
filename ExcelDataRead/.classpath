@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="/home/netstorm/Back_Up/ExcelWork1/poi-ooxml-schemas-3.12-20150511.jar"/>
 	<classpathentry kind="lib" path="/home/netstorm/Back_Up/ExcelWork1/poi-scratchpad-3.12-20150511.jar"/>
 	<classpathentry kind="lib" path="/home/netstorm/Back_Up/ExcelWork1/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="/home/netstorm/JAR_File/commons-cli-1.4/commons-cli-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

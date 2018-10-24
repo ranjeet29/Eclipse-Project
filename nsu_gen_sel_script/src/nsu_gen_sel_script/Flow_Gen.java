@@ -32,19 +32,7 @@ public class Flow_Gen {
 	
 	
 	public Flow_Gen genScript(String actionfile , String b_type,String host,String s_port,String p_port) throws Exception{
-	   /* System.out.println(" ");
-		System.err.println("************** Please Input for Flow Gen*******");
-		System.out.println(" ");
-	    sca1 = new Scanner(System.in);
-	    System.out.print("Browser Type:");
-	    String b_type = sca1.nextLine();
-	    System.out.print("Machine Host:");
-	    String host = sca1.nextLine();
-	    System.out.print("Selenium Port:");
-	    int s_port = sca1.nextInt();
-	    System.out.print("Proxy port:");
-	    int p_port = sca1.nextInt();
-*/	    
+		    
 		int sel_port = Integer.parseInt(s_port);
 		int pro_port = Integer.parseInt(p_port);
 		
@@ -52,7 +40,7 @@ public class Flow_Gen {
 	    exit.exitscript(Main.sname);  // For exit script
 	    reg.spec(Main.sname);         // For registration file
 	    nsflow.nsflow(Main.sname);    // For NSFlow file
-	    waitTime.wtime(Main.sname);   // For waitTime file
+	//    waitTime.wtime(Main.sname);   // For waitTime file
 	    sshotthreed.snapshot(Main.sname); // Snapshot Thread file
 	    runlog.rlogic(Main.sname);    // For runlogic file
 	    harbuilder.buildercall(Main.sname); // For HarBuilder file

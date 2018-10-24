@@ -96,24 +96,24 @@ public class Main {
 			    options.addOption(option_sp);
 			    
 			    Option option_n = new Option("n", "sname",true, "Script Name");
-			    option_n.setRequired(true);
+			    option_n.setRequired(false);
 			    options.addOption(option_n);
 
 
-			    Option option_b = new Option("b", "b_type", true, "Browser Type (chrome or firefox or IE)");
+			    Option option_b = new Option("b", "type", true, "Browser Type (chrome or firefox or IE or andriod or ios)");
 			    option_b.setRequired(true);
 			    options.addOption(option_b);
 			    
 			    Option option_h = new Option("h", "host", true, "Machine Host Name ( IP Address )");
-			    option_h.setRequired(true);
+			    option_h.setRequired(false);
 			    options.addOption(option_h);
 			    
 			    Option option_selport = new Option("selPort", "sel_port", true, "Selenium Server Remote Port (defaul 5555)");
-			    option_selport.setRequired(true);
+			    option_selport.setRequired(false);
 			    options.addOption(option_selport);
 			    
 			    Option option_proPort = new Option("proPort", "pro_port", true, "Proxy Server Running Port( default 7991)");
-			    option_proPort.setRequired(true);
+			    option_proPort.setRequired(false);
 			    options.addOption(option_proPort);
 			    
 			    Option option_f = new Option("f", "act_file", true, "Action Input File (default www.Cavisson.com)");
@@ -137,7 +137,7 @@ public class Main {
 			    sproj = cmd.getOptionValue("pr_dir");
 			    ssproj  = cmd.getOptionValue("spr_dir");
 			    sname =  cmd.getOptionValue("sname");
-			    b_type = cmd.getOptionValue("b_type");
+			    b_type = cmd.getOptionValue("type");
 			    host = cmd.getOptionValue("host");
 			    s_port  = cmd.getOptionValue("selPort");
 			    p_port = cmd.getOptionValue("proPort");
@@ -151,6 +151,19 @@ public class Main {
 					ssproj = "default";
 				}
                
+			    if ( sname == null){
+			    	sname = "RDTScript";
+			    }
+			    
+			    if (host == null  ){
+			    	host = "10.10.30.37";
+			    }
+			    if ( s_port == null){
+			    	s_port = "5555";
+			    }
+			    if ( p_port == null ){
+			    	p_port = "7991";
+			    }
 		   }catch(Exception e){e.getStackTrace();}
 	
 		   

@@ -1,41 +1,25 @@
 package com.cavisson.scripts.;
 
-import org.openqa.selenium.support.ui.WebDriverWait; 
 import pacJnvmApi.NSApi;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import java.util.Set;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.FindBy;
-import java.util.concurrent.TimeUnit;
 import net.lightbody.bmp.BrowserMobProxy;
 
 public class Flow implements NsFlow{
-    public static WebDriver  driver;
     public static String filePath;
-    public static BrowserMobProxy proxy;
     public static int sessId;
+    public static BrowserMobProxy proxy;
 
     public Flow() {
-        driver = init_script.driver;
         proxy  = HarBuilder.proxy;
         filePath = HarBuilder.harPath;
         sessId = HarBuilder.sessId;
     }
 
-    public Flow(WebDriver pDriver) {
-        driver = pDriver;
-     }
-
-
     public int execute(NSApi nsApi) throws Exception{
         System.out.println("Going inside Flow Page Successfully........");
         
         Flow flow= PageFactory.initElements(init_script.driver, Flow.class);
-        CommandFile command = new CommandFile(driver);
-        SnapShotThread snapshot = new SnapShotThread( nsApi, driver, 10L);
+        CommandFile command = new CommandFile(init_script.driver);
+        SnapShotThread snapshot = new SnapShotThread( nsApi, init_script.driver, 10000L);
         Thread snapshotThread = new Thread(snapshot);
         snapshotThread.start();
         

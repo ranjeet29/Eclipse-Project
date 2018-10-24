@@ -19,6 +19,7 @@ public class SnapShotThread implements Runnable {
   /* 10 secs */
   private long interval = 10000; 
   private long counter;
+  private long cliptime ;
   
   public SnapShotThread(NSApi nsapi, WebDriver driver, long interval) {
     this.nsapi = nsapi;
@@ -82,25 +83,25 @@ public class SnapShotThread implements Runnable {
     int sessionId = nsapi.ns_get_sessid();
     int pageId = nsapi.ns_get_pageId();
      
-    String out = String.format(
-      "video_clip_%d_%d_%d_%d_0_%d_%d_%d_0_%d_%d_%d.jpeg",
+   String out = String.format(
+      "video_clip_%d_%d_%d_%d_0_%d_%d_%d_0_%d_%d_%d_%d_10_0_0.jpeg",
       childIdx,
       userIdx,
       sessionInstance,
       pageInstance,
       groupIdx,
       sessionId,
-      pageId, 
+      pageId,
       clipId,
       counter,
+      cliptime,
       length
     );
-    clipId++;
-	counter += interval;
+    //clipId++;
+    cliptime += (interval*10);
+    counter += interval;
     return out;
   }
-
-  public void stopThread() {
     isRunning = false;
   }
 }

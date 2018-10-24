@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My suite" parallel="methods" thread-count="10">
+<parameter name="browsertype" value="chrome"></parameter>
+<test name="Parallel Test">
+ <classes>
+ <class name="parallelTest.ParallelTest" />
+ <!-- <class name="parallelTest.HeadlessTest" /> -->
+ </classes>
+ </test>
+</suite> <!-- Suite -->
