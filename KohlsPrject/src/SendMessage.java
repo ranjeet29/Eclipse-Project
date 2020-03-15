@@ -67,7 +67,7 @@ public class SendMessage {
     	byte[] bb = new byte[len];
     	FileInputStream fis = new FileInputStream(f);
     	fis.read(bb);
-    	String url = "https://r18-6-qa.lle-mcommerce.kohls.com/cbp/api/v1/xhr/chat";
+    	String url = "https";
     	System.out.println(new String(bb));
     	sendMessageViaChatClient(url, new String(bb));
     }
